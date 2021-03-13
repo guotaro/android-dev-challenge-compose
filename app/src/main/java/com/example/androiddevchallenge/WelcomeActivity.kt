@@ -30,6 +30,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.FirstBaseline
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -87,14 +88,13 @@ fun MyApp() {
             Column(
                 modifier = Modifier
                     .wrapContentHeight()
-                    .fillMaxWidth()
-                    .height(72.dp),
+                    .fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
                     text = "Beautiful home garden solution",
                     modifier = Modifier
-                        .firstBaselineToTop(32.dp),
+                        .firstBaselineToTop(72.dp, 32.dp),
                     style = typography.subtitle1
                 )
             }
@@ -165,6 +165,7 @@ fun DarkPreview() {
 }
 
 fun Modifier.firstBaselineToTop(
+    contentHeight: Dp,
     firstBaselineToTop: Dp,
 ) = Modifier.layout { measurable, constraints ->
     // Measure the composable
@@ -176,8 +177,7 @@ fun Modifier.firstBaselineToTop(
 
     // Height of the composable with padding - first baseline
     val placeableY = firstBaselineToTop.roundToPx() - firstBaseline
-    val height = placeable.height + placeableY
-    layout(placeable.width, height) {
+    layout(placeable.width, contentHeight.roundToPx()) {
         // Where the composable gets placed
         placeable.placeRelative(0, placeableY)
     }
