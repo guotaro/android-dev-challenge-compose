@@ -25,10 +25,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.AlignmentLine
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.FirstBaseline
+import androidx.compose.ui.layout.layout
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.ui.theme.*
 
@@ -81,19 +84,20 @@ fun MyApp() {
                 contentDescription = "",
                 modifier = Modifier.fillMaxWidth(),
             )
-            Box(
+            Column(
                 modifier = Modifier
+                    .wrapContentHeight()
                     .fillMaxWidth()
-                    .height(32.dp),
-                contentAlignment = Alignment.BottomCenter
+                    .height(72.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
                     text = "Beautiful home garden solution",
-                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .firstBaselineToTop(32.dp),
                     style = typography.subtitle1
                 )
             }
-            Spacer(Modifier.height(40.dp))
             Button(
                 onClick = { /*TODO*/ },
                 modifier = Modifier
@@ -159,3 +163,23 @@ fun DarkPreview() {
         MyApp()
     }
 }
+
+fun Modifier.firstBaselineToTop(
+    firstBaselineToTop: Dp,
+) = Modifier.layout { measurable, constraints ->
+    // Measure the composable
+    val placeable = measurable.measure(constraints)
+
+    // Check the composable has a first baseline
+    check(placeable[FirstBaseline] != AlignmentLine.Unspecified)
+    val firstBaseline = placeable[FirstBaseline]
+
+    // Height of the composable with padding - first baseline
+    val placeableY = firstBaselineToTop.roundToPx() - firstBaseline
+    val height = placeable.height + placeableY
+    layout(placeable.width, height) {
+        // Where the composable gets placed
+        placeable.placeRelative(0, placeableY)
+    }
+}
+
