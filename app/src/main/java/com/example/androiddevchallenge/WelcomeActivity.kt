@@ -30,7 +30,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.FirstBaseline
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -41,7 +40,7 @@ class WelcomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyTheme {
-                MyApp()
+                Welcome()
             }
         }
     }
@@ -49,7 +48,7 @@ class WelcomeActivity : AppCompatActivity() {
 
 // Start building your app here!
 @Composable
-fun MyApp() {
+fun Welcome() {
     Surface(
         modifier = Modifier
             .fillMaxWidth()
@@ -150,17 +149,17 @@ fun MyApp() {
 
 @Preview("Light Theme", widthDp = 360, heightDp = 640)
 @Composable
-fun LightPreview() {
+fun WelcomeLightPreview() {
     MyTheme {
-        MyApp()
+        Welcome()
     }
 }
 
-@Preview("Dark Theme", widthDp = 360, heightDp = 600, showBackground = true)
+@Preview("Dark Theme", widthDp = 360, heightDp = 640)
 @Composable
-fun DarkPreview() {
+fun WelcomeDarkPreview() {
     MyTheme(darkTheme = true) {
-        MyApp()
+        Welcome()
     }
 }
 
