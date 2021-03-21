@@ -28,6 +28,3 @@ val pink900 = Color(0xFF3F2C2C)
 
 val green300 = Color(0xFFB8C9B8)
 val green900 = Color(0xFF2D3B2D)
-
-
-
