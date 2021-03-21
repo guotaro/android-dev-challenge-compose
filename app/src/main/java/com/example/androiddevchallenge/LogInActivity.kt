@@ -3,16 +3,11 @@ package com.example.androiddevchallenge
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextAlign
@@ -20,7 +15,9 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.androiddevchallenge.ui.theme.*
+import com.example.androiddevchallenge.ui.theme.MyTheme
+import com.example.androiddevchallenge.ui.theme.shapes
+import com.example.androiddevchallenge.ui.theme.typography
 
 class LogInActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +36,7 @@ fun LogIn() {
         modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight(),
-        color = MaterialTheme.colors.onSecondary
+        color = MaterialTheme.colors.background
     ) {
 
         Column {
@@ -100,7 +97,7 @@ fun LogIn() {
                     color = MaterialTheme.colors.onPrimary,
                     textAlign = TextAlign.Center,
                     style = typography.body2,
-                    )
+                )
             }
             Button(
                 onClick = { /*TODO*/ },
