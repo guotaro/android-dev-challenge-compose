@@ -33,7 +33,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.example.androiddevchallenge.ui.theme.*
+import com.example.androiddevchallenge.ui.theme.MyTheme
+import com.example.androiddevchallenge.ui.theme.pink900
+import com.example.androiddevchallenge.ui.theme.shapes
+import com.example.androiddevchallenge.ui.theme.white
 
 class WelcomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -94,7 +97,7 @@ fun Welcome() {
                     text = "Beautiful home garden solution",
                     modifier = Modifier
                         .firstBaselineToTop(72.dp, 32.dp),
-                    style = typography.subtitle1
+                    style = MaterialTheme.typography.subtitle1
                 )
             }
             Button(
@@ -112,7 +115,7 @@ fun Welcome() {
                 Text(
                     text = "Create account",
                     color = MaterialTheme.colors.onSecondary,
-                    style = typography.button
+                    style = MaterialTheme.typography.button
                 )
             }
             Spacer(Modifier.height(8.dp))
@@ -129,7 +132,7 @@ fun Welcome() {
                         .padding(horizontal = 16.dp)
                         .wrapContentWidth()
                         .height(46.dp),
-                    shape = shapes.medium,
+                    shape = MaterialTheme.shapes.medium,
                     elevation = null,
                     colors = ButtonDefaults.textButtonColors(
                         backgroundColor = Color.Transparent
@@ -138,7 +141,7 @@ fun Welcome() {
                     Text(
                         text = "Log in",
                         color = if (isLightTheme) pink900 else white,
-                        style = typography.button
+                        style = MaterialTheme.typography.button
                     )
                 }
             }

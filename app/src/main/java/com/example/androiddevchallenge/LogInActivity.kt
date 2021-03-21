@@ -16,8 +16,6 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.ui.theme.MyTheme
-import com.example.androiddevchallenge.ui.theme.shapes
-import com.example.androiddevchallenge.ui.theme.typography
 
 class LogInActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,8 +35,8 @@ fun LogIn() {
             .fillMaxWidth()
             .fillMaxHeight(),
         color = MaterialTheme.colors.background
-    ) {
 
+    ) {
         Column {
 
             Column(
@@ -51,7 +49,7 @@ fun LogIn() {
                     text = "Log in with email",
                     modifier = Modifier
                         .firstBaselineToTop(200.dp, 184.dp),
-                    style = typography.h1
+                    style = MaterialTheme.typography.h1
                 )
             }
             OutlinedTextField(
@@ -61,7 +59,7 @@ fun LogIn() {
                     .height(56.dp)
                     .padding(horizontal = 16.dp)
                     .fillMaxWidth(),
-                textStyle = typography.body1,
+                textStyle = MaterialTheme.typography.body1,
             )
             Spacer(Modifier.height(8.dp))
             OutlinedTextField(
@@ -71,7 +69,7 @@ fun LogIn() {
                     .height(56.dp)
                     .padding(horizontal = 16.dp)
                     .fillMaxWidth(),
-                textStyle = typography.body1,
+                textStyle = MaterialTheme.typography.body1,
             )
             Column(
                 modifier = Modifier
@@ -96,7 +94,7 @@ fun LogIn() {
                         .firstBaselineToTop(56.dp, 24.dp),
                     color = MaterialTheme.colors.onPrimary,
                     textAlign = TextAlign.Center,
-                    style = typography.body2,
+                    style = MaterialTheme.typography.body2,
                 )
             }
             Button(
@@ -105,7 +103,7 @@ fun LogIn() {
                     .padding(horizontal = 16.dp)
                     .fillMaxWidth()
                     .height(46.dp),
-                shape = shapes.medium,
+                shape = MaterialTheme.shapes.medium,
                 elevation = null,
                 colors = ButtonDefaults.textButtonColors(
                     backgroundColor = MaterialTheme.colors.secondary
@@ -114,7 +112,7 @@ fun LogIn() {
                 Text(
                     text = "Log in",
                     color = MaterialTheme.colors.onSecondary,
-                    style = typography.button
+                    style = MaterialTheme.typography.button
                 )
             }
         }

@@ -7,7 +7,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -24,8 +23,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.ui.theme.MyTheme
-import com.example.androiddevchallenge.ui.theme.shapes
-import com.example.androiddevchallenge.ui.theme.typography
 
 class HomeActivity : ComponentActivity() {
 
@@ -81,7 +78,7 @@ fun Home() {
                     .height(56.dp)
                     .padding(horizontal = 16.dp)
                     .fillMaxWidth(),
-                textStyle = typography.body1,
+                textStyle = MaterialTheme.typography.body1,
                 leadingIcon = { Icon(Icons.Default.Search, "") }
             )
             Column(
@@ -96,7 +93,7 @@ fun Home() {
                     modifier = Modifier
                         .firstBaselineToTop(48.dp, 32.dp),
                     color = MaterialTheme.colors.onPrimary,
-                    style = typography.h1
+                    style = MaterialTheme.typography.h1
                 )
             }
 
@@ -112,7 +109,7 @@ fun Home() {
                             .height(136.dp)
                             .width(136.dp)
                             .padding(bottom = 8.dp),
-                        shape = shapes.small,
+                        shape = MaterialTheme.shapes.small,
                         elevation = 1.dp
                     ) {
                         Column(
@@ -140,7 +137,7 @@ fun Home() {
                                         .fillMaxWidth(),
                                     color = MaterialTheme.colors.onPrimary,
                                     textAlign = TextAlign.Center,
-                                    style = typography.h2
+                                    style = MaterialTheme.typography.h2
                                 )
                             }
                         }
@@ -163,7 +160,7 @@ fun Home() {
                     text = "Design your home garden",
                     modifier = Modifier
                         .weight(1f),
-                    style = typography.h1
+                    style = MaterialTheme.typography.h1
                 )
                 Icon(Icons.Default.FilterList, "")
             }
@@ -179,7 +176,7 @@ fun Home() {
                         modifier = Modifier
                             .height(64.dp)
                             .fillMaxWidth(),
-                        shape = shapes.small,
+                        shape = MaterialTheme.shapes.small,
                         backgroundColor = MaterialTheme.colors.background,
                         elevation = 0.dp
                     ) {
@@ -194,7 +191,7 @@ fun Home() {
                                 contentDescription = "",
                                 modifier = Modifier
                                     .size(64.dp, 64.dp)
-                                    .clip(shape = shapes.small),
+                                    .clip(shape = MaterialTheme.shapes.small),
                                 contentScale = ContentScale.Crop,
                             )
                             Spacer(Modifier.width(16.dp))
@@ -206,11 +203,11 @@ fun Home() {
                                 ) {
                                     Text(
                                         text = flower.name,
-                                        style = typography.h2
+                                        style = MaterialTheme.typography.h2
                                     )
                                     Text(
                                         text = "This is description",
-                                        style = typography.body1
+                                        style = MaterialTheme.typography.body1
                                     )
                                 }
                                 Checkbox(
