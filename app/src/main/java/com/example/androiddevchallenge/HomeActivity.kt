@@ -174,7 +174,7 @@ fun Home() {
                     .wrapContentHeight()
                     .fillMaxWidth(),
             ) {
-                items(flowers) { flower ->
+                itemsIndexed(flowers) { index, flower ->
                     Card(
                         modifier = Modifier
                             .height(64.dp)
@@ -214,10 +214,14 @@ fun Home() {
                                     )
                                 }
                                 Checkbox(
-                                    checked = true,
+                                    checked = index == 0,
                                     onCheckedChange = { /* nop */ },
                                     modifier = Modifier
-                                        .size(24.dp, 24.dp)
+                                        .size(24.dp, 24.dp),
+                                    colors = CheckboxDefaults.colors(
+                                        checkedColor = MaterialTheme.colors.secondary,
+                                        checkmarkColor = MaterialTheme.colors.onSecondary
+                                    )
                                 )
                             }
                         }
