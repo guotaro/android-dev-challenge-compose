@@ -10,4 +10,10 @@
       the License.
       -->
     <string name="app_name">AndroidDevChallenge</string>
+
+    <string name="navigation_home">Home</string>
+    <string name="navigation_favorites">Favorites</string>
+    <string name="navigation_profile">Profile</string>
+    <string name="navigation_cart">Cart</string>
+
 </resources>

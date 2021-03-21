@@ -10,6 +10,8 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -17,6 +19,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -26,12 +29,11 @@ import com.example.androiddevchallenge.ui.theme.typography
 
 class HomeActivity : ComponentActivity() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             MyTheme {
-                Home()
+                MainScreen()
             }
         }
     }
@@ -70,7 +72,6 @@ fun Home() {
         color = MaterialTheme.colors.background
     ) {
         val isLightTheme = MaterialTheme.colors.isLight
-
         Column {
             Spacer(Modifier.height(40.dp))
             OutlinedTextField(
@@ -81,13 +82,7 @@ fun Home() {
                     .padding(horizontal = 16.dp)
                     .fillMaxWidth(),
                 textStyle = typography.body1,
-//                leadingIcon = {
-//                    Image(
-//                        painter = painterResource(id = if (isLightTheme) R.drawable.search_24px else R.drawable.search_white_24dp),
-//                        contentDescription = "",
-//                        modifier = Modifier
-//                            .size(18.dp, 18.dp),
-//                    )
+                leadingIcon = { Icon(Icons.Default.Search, "") }
             )
             Column(
                 modifier = Modifier
@@ -114,8 +109,9 @@ fun Home() {
                 itemsIndexed(themes) { index, theme ->
                     Card(
                         modifier = Modifier
-                            .wrapContentHeight()
-                            .width(136.dp),
+                            .height(136.dp)
+                            .width(136.dp)
+                            .padding(bottom = 8.dp),
                         shape = shapes.small,
                         elevation = 1.dp
                     ) {
@@ -156,7 +152,7 @@ fun Home() {
                 }
             }
 
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(16.dp))
             Row(
                 modifier = Modifier
                     .padding(horizontal = 16.dp)
@@ -169,12 +165,7 @@ fun Home() {
                         .weight(1f),
                     style = typography.h1
                 )
-                Image(
-                    painter = painterResource(id = if (isLightTheme) R.drawable.filter_list_24px else R.drawable.filter_list_white_24dp),
-                    contentDescription = "",
-                    modifier = Modifier
-                        .size(24.dp, 24.dp)
-                )
+                Icon(Icons.Default.FilterList, "")
             }
             Spacer(modifier = Modifier.height(16.dp))
             LazyColumn(
@@ -239,16 +230,61 @@ fun Home() {
                 }
             }
         }
-
     }
 }
 
+
+@Composable
+fun MainScreen() {
+    val items = listOf(
+        Pair(
+            R.string.navigation_home,
+            Icons.Default.Home
+        ),
+        Pair(
+            R.string.navigation_favorites,
+            Icons.Default.FavoriteBorder
+        ),
+        Pair(
+            R.string.navigation_profile,
+            Icons.Default.AccountCircle
+        ),
+        Pair(
+            R.string.navigation_cart,
+            Icons.Default.ShoppingCart
+        ),
+    )
+    Scaffold(
+        bottomBar = {
+            BottomNavigation(
+                backgroundColor = MaterialTheme.colors.primary,
+                elevation = 16.dp
+            ) {
+                items.forEachIndexed { index, item ->
+                    BottomNavigationItem(
+                        icon = { Icon(item.second, "") },
+                        label = {
+                            Text(
+                                text = stringResource(item.first),
+                                color = MaterialTheme.colors.onPrimary,
+                            )
+                        },
+                        selected = (index == 0),
+                        onClick = { /* nop */ }
+                    )
+                }
+            }
+        }
+    ) {
+        Home()
+    }
+}
 
 @Preview("Light Theme", widthDp = 360, heightDp = 640)
 @Composable
 fun HomeLightPreview() {
     MyTheme {
-        Home()
+        MainScreen()
     }
 }
 
@@ -256,6 +292,6 @@ fun HomeLightPreview() {
 @Composable
 fun HomeDarkPreview() {
     MyTheme(darkTheme = true) {
-        Home()
+        MainScreen()
     }
 }
